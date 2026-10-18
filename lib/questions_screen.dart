@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'data/questions.dart';
+import 'models/answer_button.dart';
 
 class QuestionsScreen extends StatefulWidget {
   const QuestionsScreen({super.key});
@@ -24,8 +25,15 @@ class _QuestionsScreenState extends State<QuestionsScreen> {
           Text(
             currentQuestion.text,
             textAlign: TextAlign.center,
-            style: const TextStyle(color: Colors.white, fontSize: 22),
+            style: const TextStyle(color: Colors.white, fontSize: 16),
           ),
+          const SizedBox(height: 30),
+          ...currentQuestion.getShuffledAnswers().map((answer) {
+            return AnswerButton(
+              answerText: answer,
+              onTap: () {},
+            );
+          }),
         ],
       ),
     );
